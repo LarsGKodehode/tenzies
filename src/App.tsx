@@ -1,22 +1,45 @@
-import { Component, ReactComponentElement, ReactNode } from 'react';
+// IMPORTS
+import React, { useState } from 'react';
 import './App.css';
 import Button from './assets/components/Button/Button';
 import Dice from './assets/components/Dice/Dice';
 
-function populateBoard(element: JSX.Element): Array<JSX.Element> {
-  const numberOfDice = 8;
-  return new Array(numberOfDice).fill(element)
+
+// INTERFACES
+interface AppState {
+  diceState: Array<number>
 };
 
+
+// HELPERS
+function populateBoard(diceArray: Array<number>): Array<JSX.Element> {
+  return diceArray.map((diceEyes) => {
+    return <Dice eyes={diceEyes} />
+  });
+};
+
+
+// COMPONENT
 function App() {
+  const [ data, setData ] = useState<AppState>(
+    {
+      diceState: new Array(8).fill(1),
+    }
+  );
+
+  function rollDice() {
+    console.log("rolling dice")
+  };
+
   return (
     <div className="App">
       <ul>
-        {populateBoard(<Dice />)}
+        {React.Children.toArray(populateBoard(data.diceState))}
       </ul>
-      <Button />
+
+      <Button handleClick={() => rollDice()}/>
     </div>
-  )
+  );
 };
 
 export default App;
