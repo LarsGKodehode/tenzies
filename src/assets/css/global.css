@@ -1,0 +1,26 @@
+/* Site wide styling */
+* {
+  /* Saner layout defaults */
+  box-sizing: border-box;
+}
+
+/* Tweaks */
+html, body {
+  /* Getting rid of unwanted margins */
+  margin: 0px;
+
+  /* Use all the real estate */
+  height: 100%;
+}
+#root, .App {
+  height: 100%;
+}
+
+/* Global spacing */
+:root {
+  --spacing-huge: 50px;
+  --spacing-large: 40xp;
+  --spacing-medium: 20px;
+  --spacing-small: 10px;
+  --spacing-tiny: 5px;
+}

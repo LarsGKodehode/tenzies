@@ -1,0 +1,4 @@
+/* Fixes document height to full viewport */
+html {
+  min-height: 100%;
+}

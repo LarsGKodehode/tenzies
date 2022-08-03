@@ -1,0 +1,42 @@
+/* TYPOGRAPHY */
+@font-face {
+  font-family: 'Stint Ultra Condensed', cursive;
+  src: url("../fonts/StintUltraCondensed-Regular.ttf");
+}
+
+* {
+  /* Fonts */
+  font-family: "Stint Ultra Condensed", sans-serif;
+
+  /* Magic number from
+   * https://matthewjamestaylor.com/responsive-font-size
+   */
+  font-size: calc(15px + 0.390625vw);
+}
+
+.font-huge {
+  font-size: 150%;
+  font-weight: 800;
+  margin: 0;
+}
+
+.font-large {
+  font-size: 125%;
+  font-weight: 600;
+  margin: 0;
+}
+
+.font-big {
+  font-size: 110%;
+  margin: 0;
+}
+
+.font-normal {
+  font-size: 100%;
+  margin: 0;
+}
+
+.font-small {
+  font-size: 80%;
+  margin: 0;
+}
