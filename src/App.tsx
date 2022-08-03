@@ -39,13 +39,19 @@ function App() {
     })
   };
 
+
+  // Props
+  const buttonProps = {
+    handleClick: () => rollDice(),
+  };
+
   return (
     <div className="App">
       <ul>
         {React.Children.toArray(populateBoard(data.diceState))}
       </ul>
 
-      <Button handleClick={() => rollDice()}/>
+      <Button {...buttonProps}/>
     </div>
   );
 };
