@@ -28,7 +28,15 @@ function App() {
   );
 
   function rollDice() {
-    console.log("rolling dice")
+    setData((oldData) => {
+      const newDice = oldData.diceState.map(() => {
+        return Math.floor(Math.random() * 6) + 1;
+      });
+      return {
+        ...oldData,
+        diceState: newDice
+      }
+    })
   };
 
   return (
