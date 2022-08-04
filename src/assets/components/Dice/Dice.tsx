@@ -1,5 +1,8 @@
 import { MouseEventHandler, useState } from "react";
 
+// CSS
+import styles from './dice.module.css'
+
 interface DiceProps {
   eyes: number,
   handleClick: MouseEventHandler,
@@ -8,7 +11,9 @@ interface DiceProps {
 function Dice(props: DiceProps): JSX.Element {
   const { eyes, handleClick } = props;
   
-  const [ active, setActive ] = useState<boolean>(true)
+  const [ active, setActive ] = useState<boolean>(true);
+
+  
 
   return(
     <div
