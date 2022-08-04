@@ -1,0 +1,23 @@
+.App {
+  /* placement */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* colors */
+  background-color: var(--palette-secondary-500);
+}
+
+.container {
+  /* placement */
+  display: flex;
+  flex-direction: column;
+
+  /* shape */
+  padding: 1em;
+  border-radius: 10px;
+
+  /* colors */
+  background-color: var(--palette-primary-500);
+}
