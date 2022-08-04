@@ -99,7 +99,10 @@ function App() {
   return (
     <main id='App' className={styles['App']} data-theme='bright'>
 
-      <ul className={styles['game-board']}>
+      <ul className={[
+        'font-huge',
+        styles['game-board']
+        ].join(" ")}>
         {React.Children.toArray(populateBoard(data.diceState))}
       </ul>
 
