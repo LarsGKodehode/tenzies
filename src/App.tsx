@@ -49,14 +49,13 @@ function App() {
 
   return (
     <main id='App' className={styles['App']} data-theme='bright'>
-      <div className='container'>
-        
-        <ul>
-          {React.Children.toArray(populateBoard(data.diceState))}
-        </ul>
 
-        <Button {...buttonProps}/>
-      </div>
+      <ul>
+        {React.Children.toArray(populateBoard(data.diceState))}
+      </ul>
+
+      <Button {...buttonProps}/>
+      
     </main>
   );
 };
