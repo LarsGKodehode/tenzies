@@ -6,19 +6,16 @@ import styles from './dice.module.css'
 interface DiceProps {
   eyes: number,
   handleClick: MouseEventHandler,
+  isActive: boolean,
 };
 
 function Dice(props: DiceProps): JSX.Element {
-  const { eyes, handleClick } = props;
-  
-  const [ active, setActive ] = useState<boolean>(true);
-
-  
+  const { eyes, handleClick, isActive } = props;  
 
   return(
     <div
       className={[
-        active ? "acitve" : "inactive",
+        isActive ? "acitve" : "inactive",
         styles['dice']
       ].join(" ")}
       onClick={handleClick}
