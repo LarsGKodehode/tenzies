@@ -16,8 +16,14 @@ interface AppState {
 // HELPERS
 function populateBoard(diceArray: Array<number>): Array<JSX.Element> {
   return diceArray.map((diceEyes) => {
-    return <Dice eyes={diceEyes} />
+    return <Dice eyes={diceEyes} handleClick={diceClick} />
   });
+};
+
+function diceClick(event: any): void {
+  
+  console.log(`Clicked on dice:\t${event.target}`)
+  console.dir(event)
 };
 
 
