@@ -1,5 +1,7 @@
 /* ===== PALETTES CONSTANTS ===== */
 :root {
+  --palette-action-500: #5035FF;
+
   --palette-success-500: #27B1E0;
 
   --palette-error-500: #E00E03;
@@ -14,19 +16,19 @@
 /* ====== PALETTE THEMES ====== */
 
 /* bright theme */
-.App[data-theme = "bright"] {
+#App[data-theme = "bright"] {
   /* Primary */
-  --palette-primary-500: #180A1E;
+  --palette-primary-500: #FFFFFF;
 
-  --palette-primary-500-text: #00D0FD;
+  --palette-primary-500-text: #0B2434;
   
   /* Secondary */
-  --palette-secondary-500: #933BC9;
+  --palette-secondary-500: #0B2434;
   
   --palette-secondary-500-text: #003340;
   
   /* Tertiary */
-  --palette-tertiary-500: #ADAB1F;
+  --palette-tertiary-500: #59E391;
   
   --palette-tertiary-500-text: #001820;
 }

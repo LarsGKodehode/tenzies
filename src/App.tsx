@@ -1,8 +1,10 @@
 // IMPORTS
 import React, { useState } from 'react';
-import './App.css';
 import Button from './assets/components/Button/Button';
 import Dice from './assets/components/Dice/Dice';
+
+// CSS
+import styles from './App.module.css';
 
 
 // INTERFACES
@@ -46,13 +48,15 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <main id='App' className={styles['App']} data-theme='bright'>
+
       <ul>
         {React.Children.toArray(populateBoard(data.diceState))}
       </ul>
 
       <Button {...buttonProps}/>
-    </div>
+      
+    </main>
   );
 };
 
