@@ -6,9 +6,9 @@
   align-items: center;
 
   /* shape */
-  width: 100%;
-  max-width: 100%;
-  min-height: 100%;
+  width: 50%;
+  max-width: 80%;
+  min-height: 50%;
 
   /* colors */
   background-color: var(--palette-primary-500);
