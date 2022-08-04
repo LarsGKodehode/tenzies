@@ -48,7 +48,7 @@ function App() {
   };
 
   return (
-    <main className={styles['App']} data-theme='bright'>
+    <main id='App' className={styles['App']} data-theme='bright'>
       <div className='container'>
         
         <ul>

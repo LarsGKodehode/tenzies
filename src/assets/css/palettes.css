@@ -16,7 +16,7 @@
 /* ====== PALETTE THEMES ====== */
 
 /* bright theme */
-.App[data-theme = "bright"] {
+#App[data-theme = "bright"] {
   /* Primary */
   --palette-primary-500: #FFFFFF;
 
