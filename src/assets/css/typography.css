@@ -1,12 +1,12 @@
 /* TYPOGRAPHY */
 @font-face {
-  font-family: 'Stint Ultra Condensed', cursive;
-  src: url("../fonts/StintUltraCondensed-Regular.ttf");
+  font-family: 'Karla', cursive;
+  src: url("../fonts/Karla/Karla-Italic-VariableFont_wght.ttf");
 }
 
 * {
   /* Fonts */
-  font-family: "Stint Ultra Condensed", sans-serif;
+  font-family: "Karla", sans-serif;
 
   /* Magic number from
    * https://matthewjamestaylor.com/responsive-font-size
