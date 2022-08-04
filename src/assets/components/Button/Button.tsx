@@ -5,9 +5,11 @@ interface ButtonProps {
 };
 
 function Button(props: ButtonProps) {
+  const { handleClick } = props;
+
   return(
     <button
-      onClick={props.handleClick}
+      onClick={handleClick}
     >
       Roll Dice
     </button>
