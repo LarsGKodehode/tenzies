@@ -9,35 +9,84 @@ import styles from './App.module.css';
 
 // INTERFACES
 interface AppState {
-  diceState: Array<number>
+  diceState: Array<DiceState>
 };
+
+interface DiceState {
+  diceEyes: number,
+  isActive: boolean,
+}
 
 
 // HELPERS
-function populateBoard(diceArray: Array<number>): Array<JSX.Element> {
-  return diceArray.map((diceEyes) => {
-    return <Dice eyes={diceEyes} />
+/**
+ * Populates the board with dices
+ * @param diceArray 
+ * @returns 
+ */
+function populateBoard(diceArray: Array<DiceState>): Array<JSX.Element> {
+  return diceArray.map((diceState: DiceState) => {
+    const { diceEyes, isActive} = diceState;
+
+    return(
+      <Dice
+        eyes={diceEyes}
+        handleClick={diceClick}
+        isActive={isActive}
+      />)
   });
+};
+
+/**
+ * Handles what happens when clicking on dice
+ */
+function diceClick(event: any): void {
+  console.log(`Clicked on dice:\t${event.target}`)
+  console.dir(event)
+};
+
+/**
+ * Construct the initial state of App,
+ * currently only dices
+ * @returns 
+ */
+const initialAppState = (): AppState => {
+
+  const numberOfDice = 10;
+
+  let diceArray: Array<DiceState> = [];
+
+  for(let i = 0; i < numberOfDice; i++) {
+    diceArray.push({
+      diceEyes: Math.floor(Math.random() * 6) + 1,
+      isActive: true,
+    });
+  };
+
+  return {
+    diceState: diceArray
+  };
 };
 
 
 // COMPONENT
 function App() {
-  const [ data, setData ] = useState<AppState>(
-    {
-      diceState: new Array(8).fill(1),
-    }
-  );
+  const [ data, setData ] = useState<AppState>(initialAppState);
 
   function rollDice() {
     setData((oldData) => {
-      const newDice = oldData.diceState.map(() => {
-        return Math.floor(Math.random() * 6) + 1;
+      const newRoll = oldData.diceState.map((diceState) => {
+        const roll = Math.floor(Math.random() * 6) + 1;
+        return {
+          ...diceState,
+          diceEyes: roll
+        }
       });
+      
       return {
         ...oldData,
-        diceState: newDice
-      }
+        diceState: newRoll,
+      };
     })
   };
 
