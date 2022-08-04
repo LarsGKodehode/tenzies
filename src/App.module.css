@@ -10,6 +10,8 @@
   max-width: 80%;
   min-height: 50%;
 
+  border-radius: 20px;
+
   /* colors */
   background-color: var(--palette-primary-500);
 }
