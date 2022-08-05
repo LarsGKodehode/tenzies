@@ -37,6 +37,7 @@ function App() {
       diceArray.push({
         diceEyes: Math.floor(Math.random() * 6) + 1,
         isActive: true,
+        dieNumber: i,
       });
     };
 
