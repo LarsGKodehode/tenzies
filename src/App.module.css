@@ -2,8 +2,10 @@
   /* placement */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+
+  gap: 1em;
 
   /* shape */
   width: 80%;
@@ -19,9 +21,10 @@
 
 .game-board {
   /* placement */
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(5, auto);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1em 1em;
 
   /* shape */
   padding: 0px;
