@@ -1,31 +1,25 @@
+import React from 'react';
 // CSS
 import styles from './game-info.module.css';
 
 interface InfoProp {
   title: string,
-  body: string
+  body: Array<string>
 };
 
 function GameInfo(props: InfoProp): JSX.Element {
   const { title, body } = props;
 
-  const titleClasses = {
-    className: [
-      styles[title],
-    ].join(" ")
-  };
-
-  const bodyClasses = {
-    className: [
-      styles[body],
-    ].join(" ")
+  function extractLines(): Array<JSX.Element> {
+    return body.map(line => (<p>{line}</p>));
   };
 
   return(
-    <div className={styles['container']}>
-      <h1 {...titleClasses}>{title}</h1>
-      <p {...bodyClasses}>{body}</p>
-    </div>
+    <header className={styles['container']}>
+      <h1>{title}</h1>
+      {React.Children.toArray(extractLines())}
+      <hr></hr>
+    </header>
   );
 };
 

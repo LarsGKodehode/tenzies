@@ -128,8 +128,11 @@ function App() {
 
   // Props
   const gameInfoProps = {
-    title: "",
-    body: "",
+    title: "Tenzies",
+    body: [
+      "Goal is to get all dices to have the same value.",
+      "You can lock in a die by clicking on it.",
+    ],
   };
 
   const ulProps = {
