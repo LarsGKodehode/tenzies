@@ -4,23 +4,30 @@ import { MouseEventHandler, useState } from "react";
 import styles from './dice.module.css'
 
 interface DiceProps {
-  eyes: number,
-  handleClick: MouseEventHandler,
+  diceEyes: number,
+  handleClick: CallableFunction,
   isActive: boolean,
+  dieNumber: number,
 };
 
 function Dice(props: DiceProps): JSX.Element {
-  const { eyes, handleClick, isActive } = props;  
+
+  const { diceEyes, handleClick, isActive, dieNumber } = props;  
+
+  const dieClassNames = {
+    className: [
+      'font-big',
+      styles[isActive ? 'active' : 'inactive'],
+      styles['dice']
+    ].join(" "),
+  }
 
   return(
     <div
-      className={[
-        isActive ? "acitve" : "inactive",
-        styles['dice']
-      ].join(" ")}
-      onClick={handleClick}
+      {...dieClassNames}
+      onClick={(e) => handleClick(e, dieNumber)}
     >
-      {eyes}
+      {diceEyes}
     </div>
   );
 };

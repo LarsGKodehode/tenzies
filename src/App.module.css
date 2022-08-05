@@ -2,15 +2,16 @@
   /* placement */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
   /* shape */
-  width: 50%;
-  max-width: 80%;
-  min-height: 50%;
+  width: 80%;
+  max-width: 95%;
+  min-height: 80%;
 
   border-radius: 20px;
+  padding: 20% 10%;
 
   /* colors */
   background-color: var(--palette-primary-500);
