@@ -1,5 +1,5 @@
 // IMPORTS
-import React, { BaseSyntheticEvent, SyntheticEvent, useState } from 'react';
+import React, { BaseSyntheticEvent, useState } from 'react';
 import Button from './assets/components/Button/Button';
 import Dice from './assets/components/Dice/Dice';
 
