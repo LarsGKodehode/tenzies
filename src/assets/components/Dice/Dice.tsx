@@ -1,5 +1,3 @@
-import { MouseEventHandler, useState } from "react";
-
 // CSS
 import styles from './dice.module.css'
 
@@ -14,12 +12,17 @@ function Dice(props: DiceProps): JSX.Element {
 
   const { diceEyes, handleClick, isActive, dieNumber } = props;  
 
+  const dieClassNames = {
+    className: [
+      'font-big',
+      styles[isActive ? 'active' : 'inactive'],
+      styles['dice']
+    ].join(" "),
+  }
+
   return(
     <div
-      className={[
-        isActive ? "acitve" : "inactive",
-        styles['dice']
-      ].join(" ")}
+      {...dieClassNames}
       onClick={(e) => handleClick(e, dieNumber)}
     >
       {diceEyes}

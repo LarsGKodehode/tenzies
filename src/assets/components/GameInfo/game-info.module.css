@@ -1,0 +1,26 @@
+.container {
+  /* placement */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* shape */
+  width: 100%;
+  margin-bottom: 2em;
+}
+
+.container > h1 {
+  
+}
+
+.container > p {
+
+}
+
+.container > hr {
+  /* placement */
+  min-width: 100%;
+
+  /* color */
+  border: 2px solid var(--palette-shadow);
+}
