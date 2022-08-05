@@ -127,6 +127,7 @@ function App() {
 
 
   // Props
+<<<<<<< HEAD
   const gameInfoProps = {
     title: "Tenzies",
     body: [
@@ -135,6 +136,8 @@ function App() {
     ],
   };
 
+=======
+>>>>>>> main
   const ulProps = {
     className: [
       'font-huge',
