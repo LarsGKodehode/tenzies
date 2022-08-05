@@ -1,5 +1,3 @@
-import { MouseEventHandler, useState } from "react";
-
 // CSS
 import styles from './dice.module.css'
 
