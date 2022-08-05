@@ -1,5 +1,5 @@
 // IMPORTS
-import React, { BaseSyntheticEvent, useState } from 'react';
+import React, { BaseSyntheticEvent, useEffect, useState } from 'react';
 
 // components
 import GameInfo from './assets/components/GameInfo/GameInfo';
@@ -13,6 +13,7 @@ import styles from './App.module.css';
 // INTERFACES
 interface AppState {
   diceState: Array<DiceState>,
+  conditionWon: boolean,
 };
 
 interface DiceState {
@@ -45,7 +46,8 @@ function App() {
     };
 
     return {
-      diceState: diceArray
+      diceState: diceArray,
+      conditionWon: false,
     };
   };
 
@@ -124,6 +126,34 @@ function App() {
       };
     });
   };
+
+  /**
+   * Resets board
+   */
+  function resetBoard(): void {
+    setData(initialAppState);
+  };
+
+  /**
+   * Checks if win condition are satisfied
+   */
+  useEffect(() => {
+      const diceState = data.diceState;
+  
+      let eyes;
+  
+      for(const die of diceState) {
+        // first iteration
+        if(eyes === undefined) {eyes = die.diceEyes};
+  
+        // return if not same value
+        if(!(eyes === die.diceEyes)) {return}
+      };
+
+      // if we get here we have won
+      console.log("we won");
+      resetBoard();
+  }, [data.diceState])
 
 
   // Props
