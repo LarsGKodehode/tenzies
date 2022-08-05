@@ -25,10 +25,11 @@
   transition: transform 50ms ease-in-out;
 }
 
-.dice:hover {
-  border: 3px solid var(--palette-tertiary-500);
-  transform: scale(1.1);
-}
+@media (any-hover){
+  .dice:hover {
+    border: 3px solid var(--palette-tertiary-500);
+    transform: scale(1.1);
+}}
 
 .inactive {
   border: 3px solid var(--palette-tertiary-500);
