@@ -4,13 +4,13 @@ import { MouseEventHandler, useState } from "react";
 import styles from './dice.module.css'
 
 interface DiceProps {
-  eyes: number,
-  handleClick: MouseEventHandler,
+  diceEyes: number,
+  handleClick: CallableFunction,
   isActive: boolean,
 };
 
 function Dice(props: DiceProps): JSX.Element {
-  const { eyes, handleClick, isActive } = props;  
+  const { diceEyes, handleClick, isActive } = props;  
 
   return(
     <div
@@ -18,9 +18,9 @@ function Dice(props: DiceProps): JSX.Element {
         isActive ? "acitve" : "inactive",
         styles['dice']
       ].join(" ")}
-      onClick={handleClick}
+      onClick={(e) => handleClick(e)}
     >
-      {eyes}
+      {diceEyes}
     </div>
   );
 };

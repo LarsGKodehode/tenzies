@@ -9,7 +9,7 @@ import styles from './App.module.css';
 
 // INTERFACES
 interface AppState {
-  diceState: Array<DiceState>
+  diceState: Array<DiceState>,
 };
 
 interface DiceState {
@@ -18,62 +18,56 @@ interface DiceState {
 };
 
 
-// HELPERS
-/**
- * Populates the board with dices
- * @param diceArray 
- * @returns 
- */
-function populateBoard(diceArray: Array<DiceState>): Array<JSX.Element> {
-  return diceArray.map((diceState: DiceState) => {
-    const { diceEyes, isActive} = diceState;
+// COMPONENT
+function App() {
 
-    return(
-      <Dice
-        eyes={diceEyes}
-        handleClick={diceClick}
-        isActive={isActive}
-      />
-    );
-  });
-};
+    /**
+   * Construct the initial state of App,
+   * currently only dices
+   * @returns 
+   */
+  const initialAppState = (): AppState => {
 
+    const numberOfDice = 10;
 
-/**
- * Handles what happens when clicking on dice
- */
-function diceClick(event: any): void {
-  console.log(`Clicked on dice:\t${event.target}`)
-  console.dir(event)
-};
+    let diceArray: Array<DiceState> = [];
 
-/**
- * Construct the initial state of App,
- * currently only dices
- * @returns 
- */
-const initialAppState = (): AppState => {
+    for(let i = 0; i < numberOfDice; i++) {
+      diceArray.push({
+        diceEyes: Math.floor(Math.random() * 6) + 1,
+        isActive: true,
+      });
+    };
 
-  const numberOfDice = 10;
+    return {
+      diceState: diceArray
+    };
+  };
 
-  let diceArray: Array<DiceState> = [];
+  const [ data, setData ] = useState<AppState>(initialAppState);
 
-  for(let i = 0; i < numberOfDice; i++) {
-    diceArray.push({
-      diceEyes: Math.floor(Math.random() * 6) + 1,
-      isActive: true,
+  // HELPERS
+  /**
+   * Populates the board with dices
+   * @param diceArray 
+   * @returns 
+   */
+  function populateBoard(diceArray: Array<DiceState>): Array<JSX.Element> {
+    return diceArray.map((diceState) => {
+      const { diceEyes, isActive} = diceState;
+
+      const diceProps = {
+          diceEyes: diceEyes,
+          handleClick: diceClick,
+          isActive: isActive,
+      };
+
+      return(
+        <Dice {...diceProps} />
+      );
     });
   };
 
-  return {
-    diceState: diceArray
-  };
-};
-
-
-// COMPONENT
-function App() {
-  const [ data, setData ] = useState<AppState>(initialAppState);
 
   /**
    * Handles rolling of dice
@@ -96,6 +90,14 @@ function App() {
   };
 
 
+  /**
+   * Handles what happens when clicking on dice
+   */
+  function diceClick(event: any): void {
+    console.dir(event)
+  };
+
+
   // Props
   const buttonProps = {
     handleClick: () => rollDice(),
@@ -108,7 +110,9 @@ function App() {
         'font-huge',
         styles['game-board']
         ].join(" ")}>
+
         {React.Children.toArray(populateBoard(data.diceState))}
+
       </ul>
 
       <Button {...buttonProps}/>
