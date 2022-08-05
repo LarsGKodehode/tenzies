@@ -124,6 +124,13 @@ function App() {
 
 
   // Props
+  const ulProps = {
+    className: [
+      'font-huge',
+      styles['game-board']
+      ].join(" "),
+  };
+
   const buttonProps = {
     handleClick: () => rollDice(),
   };
@@ -131,13 +138,8 @@ function App() {
   return (
     <main id='App' className={styles['App']} data-theme='bright'>
 
-      <ul className={[
-        'font-huge',
-        styles['game-board']
-        ].join(" ")}>
-
+      <ul {...ulProps}>
         {React.Children.toArray(populateBoard(data.diceState))}
-
       </ul>
 
       <Button {...buttonProps}/>

@@ -17,7 +17,7 @@ function Dice(props: DiceProps): JSX.Element {
   return(
     <div
       className={[
-        isActive ? "acitve" : "inactive",
+        styles[isActive ? 'active' : 'inactive'],
         styles['dice']
       ].join(" ")}
       onClick={(e) => handleClick(e, dieNumber)}
