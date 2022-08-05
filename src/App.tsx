@@ -128,6 +128,13 @@ function App() {
   };
 
   /**
+   * Resets board
+   */
+  function resetBoard(): void {
+    setData(initialAppState);
+  };
+
+  /**
    * Checks if win condition are satisfied
    */
   useEffect(() => {
@@ -144,8 +151,8 @@ function App() {
       };
 
       // if we get here we have won
-      console.log("we won")
-      
+      console.log("we won");
+      resetBoard();
   }, [data.diceState])
 
 
