@@ -1,5 +1,5 @@
 // IMPORTS
-import React, { useState } from 'react';
+import React, { BaseSyntheticEvent, SyntheticEvent, useState } from 'react';
 import Button from './assets/components/Button/Button';
 import Dice from './assets/components/Dice/Dice';
 
@@ -15,6 +15,7 @@ interface AppState {
 interface DiceState {
   diceEyes: number,
   isActive: boolean,
+  dieNumber: number,
 };
 
 
@@ -53,13 +54,15 @@ function App() {
    * @returns 
    */
   function populateBoard(diceArray: Array<DiceState>): Array<JSX.Element> {
-    return diceArray.map((diceState) => {
+    return diceArray.map((diceState, index) => {
+
       const { diceEyes, isActive} = diceState;
 
       const diceProps = {
           diceEyes: diceEyes,
           handleClick: diceClick,
           isActive: isActive,
+          dieNumber: index,
       };
 
       return(
@@ -75,11 +78,15 @@ function App() {
   function rollDice() {
     setData((oldData) => {
       const newRoll = oldData.diceState.map((diceState) => {
+        // return if dice is locked
+        if(!diceState.isActive) {return diceState};
+
         const roll = Math.floor(Math.random() * 6) + 1;
+
         return {
           ...diceState,
           diceEyes: roll
-        }
+        };
       });
       
       return {
@@ -93,8 +100,25 @@ function App() {
   /**
    * Handles what happens when clicking on dice
    */
-  function diceClick(event: any): void {
-    console.dir(event)
+  function diceClick(event: BaseSyntheticEvent, dieNumber: number): void {
+
+    setData((oldData: AppState): AppState => {
+
+      const newDiceState = oldData.diceState.map((die, index) => {
+        if(index !== dieNumber) {return die}
+        else {
+          return {
+            ...die,
+            isActive: !die.isActive,
+          };
+        };
+      });
+
+      return {
+        ...oldData,
+        diceState: newDiceState,
+      };
+    });
   };
 
 

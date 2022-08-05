@@ -7,10 +7,12 @@ interface DiceProps {
   diceEyes: number,
   handleClick: CallableFunction,
   isActive: boolean,
+  dieNumber: number,
 };
 
 function Dice(props: DiceProps): JSX.Element {
-  const { diceEyes, handleClick, isActive } = props;  
+
+  const { diceEyes, handleClick, isActive, dieNumber } = props;  
 
   return(
     <div
@@ -18,7 +20,7 @@ function Dice(props: DiceProps): JSX.Element {
         isActive ? "acitve" : "inactive",
         styles['dice']
       ].join(" ")}
-      onClick={(e) => handleClick(e)}
+      onClick={(e) => handleClick(e, dieNumber)}
     >
       {diceEyes}
     </div>
