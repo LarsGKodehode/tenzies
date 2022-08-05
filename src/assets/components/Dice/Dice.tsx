@@ -14,12 +14,17 @@ function Dice(props: DiceProps): JSX.Element {
 
   const { diceEyes, handleClick, isActive, dieNumber } = props;  
 
+  const dieClassNames = {
+    className: [
+      'font-big',
+      styles[isActive ? 'active' : 'inactive'],
+      styles['dice']
+    ].join(" "),
+  }
+
   return(
     <div
-      className={[
-        styles[isActive ? 'active' : 'inactive'],
-        styles['dice']
-      ].join(" ")}
+      {...dieClassNames}
       onClick={(e) => handleClick(e, dieNumber)}
     >
       {diceEyes}

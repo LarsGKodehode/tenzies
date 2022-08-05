@@ -1,0 +1,25 @@
+.button {
+  /* shape */
+  padding: 1em 4em;
+  border-radius: 10px;
+
+  /* color */
+  background-color: var(--palette-action-500);
+  color: var(--palette-white);
+  border-color: transparent;
+
+  /* effects */
+  box-shadow: .1em .1em .4em .2em var(--palette-shadow);
+
+  /* animation */
+  transition: all 50ms ease-in-out;
+}
+
+.button:hover {
+  border-color: var(--palette-white);
+}
+
+.button:active {
+  transform: translate(0px, 2%);
+  box-shadow: inset .1em .1em .2em .2em var(--palette-shadow);
+}
