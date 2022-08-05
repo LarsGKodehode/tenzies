@@ -5,6 +5,8 @@
   justify-content: space-around;
   align-items: center;
 
+  gap: 1em;
+
   /* shape */
   width: 80%;
   max-width: 95%;
@@ -21,6 +23,7 @@
   /* placement */
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   gap: 1em 1em;
 
   /* shape */
