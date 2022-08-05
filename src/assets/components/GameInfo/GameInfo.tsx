@@ -1,5 +1,5 @@
 // CSS
-import styles from './game-info.module.css'
+import styles from './game-info.module.css';
 
 interface InfoProp {
   title: string,
@@ -9,10 +9,24 @@ interface InfoProp {
 function GameInfo(props: InfoProp): JSX.Element {
   const { title, body } = props;
 
+  const titleClasses = {
+    className: [
+      styles[title],
+    ].join(" ")
+  };
+
+  const bodyClasses = {
+    className: [
+      styles[body],
+    ].join(" ")
+  };
+
   return(
-    <div>
-      <h1>{title}</h1>
-      <p>{body}</p>
+    <div className={styles['container']}>
+      <h1 {...titleClasses}>{title}</h1>
+      <p {...bodyClasses}>{body}</p>
     </div>
   );
 };
+
+export default GameInfo;
