@@ -15,7 +15,7 @@ interface AppState {
 interface DiceState {
   diceEyes: number,
   isActive: boolean,
-}
+};
 
 
 // HELPERS
@@ -33,9 +33,11 @@ function populateBoard(diceArray: Array<DiceState>): Array<JSX.Element> {
         eyes={diceEyes}
         handleClick={diceClick}
         isActive={isActive}
-      />)
+      />
+    );
   });
 };
+
 
 /**
  * Handles what happens when clicking on dice
@@ -73,6 +75,9 @@ const initialAppState = (): AppState => {
 function App() {
   const [ data, setData ] = useState<AppState>(initialAppState);
 
+  /**
+   * Handles rolling of dice
+   */
   function rollDice() {
     setData((oldData) => {
       const newRoll = oldData.diceState.map((diceState) => {
@@ -87,7 +92,7 @@ function App() {
         ...oldData,
         diceState: newRoll,
       };
-    })
+    });
   };
 
 
