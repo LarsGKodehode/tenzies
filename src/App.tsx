@@ -127,7 +127,6 @@ function App() {
 
 
   // Props
-<<<<<<< HEAD
   const gameInfoProps = {
     title: "Tenzies",
     body: [
@@ -136,8 +135,6 @@ function App() {
     ],
   };
 
-=======
->>>>>>> main
   const ulProps = {
     className: [
       'font-huge',
@@ -155,6 +152,7 @@ function App() {
 
       <ul {...ulProps}>
         {React.Children.toArray(populateBoard(data.diceState))}
+
       </ul>
 
       <Button {...buttonProps}/>
