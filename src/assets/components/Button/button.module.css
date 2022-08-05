@@ -15,9 +15,10 @@
   transition: all 50ms ease-in-out;
 }
 
-.button:hover {
-  border-color: var(--palette-white);
-}
+@media (any-hover){
+  .button:hover {
+    border-color: var(--palette-white);
+}}
 
 .button:active {
   transform: translate(0px, 2%);
