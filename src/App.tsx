@@ -1,5 +1,8 @@
 // IMPORTS
 import React, { BaseSyntheticEvent, useState } from 'react';
+
+// components
+import GameInfo from './assets/components/GameInfo/GameInfo';
 import Button from './assets/components/Button/Button';
 import Dice from './assets/components/Dice/Dice';
 
@@ -124,6 +127,17 @@ function App() {
 
 
   // Props
+<<<<<<< HEAD
+  const gameInfoProps = {
+    title: "Tenzies",
+    body: [
+      "Goal is to get all dices to have the same value.",
+      "You can lock in a die by clicking on it.",
+    ],
+  };
+
+=======
+>>>>>>> main
   const ulProps = {
     className: [
       'font-huge',
@@ -137,6 +151,7 @@ function App() {
 
   return (
     <main id='App' className={styles['App']} data-theme='bright'>
+      <GameInfo {...gameInfoProps} />
 
       <ul {...ulProps}>
         {React.Children.toArray(populateBoard(data.diceState))}
