@@ -10,10 +10,11 @@
   /* shape */
   width: 80%;
   max-width: 95%;
-  min-height: 80%;
+  min-height: calc(100vh - calc(var(--spacing-medium) * 2));
 
   border-radius: 20px;
-  padding: 20% 10%;
+  padding: var(--spacing-tiny) var(--spacing-huge);
+  margin: var(--spacing-medium);
 
   /* colors */
   background-color: var(--palette-primary-500);
@@ -24,7 +25,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 1em 1em;
+  gap: var(--spacing-medium);
 
   /* shape */
   padding: 0px;
