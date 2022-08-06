@@ -28,7 +28,6 @@ function App() {
 
     /**
    * Construct the initial state of App,
-   * currently only dices
    * @returns 
    */
   const initialAppState = (): AppState => {
@@ -135,24 +134,40 @@ function App() {
   };
 
   /**
-   * Checks if win condition are satisfied
+   * Checks if game state === game won
+   */
+  function gameIsWon(): boolean {
+    const diceState = data.diceState;
+  
+    let eyes;
+
+    for(const die of diceState) {
+      if(eyes === undefined) {eyes = die.diceEyes};
+
+      // return if not same value
+      if(!(eyes === die.diceEyes)) {return false}
+    };
+
+    // if we get here we have won
+    console.log("we won");
+    return true;
+  };
+
+  /**
+   * Handles all the stuff we want to do when game is over
+   * currently rather empty
+   */
+  function gameOver(): void {
+    setTimeout(resetBoard, 2000);
+  };
+
+  /**
+   * Keeps track of if game is won and handles what should happen next
    */
   useEffect(() => {
-      const diceState = data.diceState;
-  
-      let eyes;
-  
-      for(const die of diceState) {
-        // first iteration
-        if(eyes === undefined) {eyes = die.diceEyes};
-  
-        // return if not same value
-        if(!(eyes === die.diceEyes)) {return}
-      };
+    if(!gameIsWon()) {return};
 
-      // if we get here we have won
-      console.log("we won");
-      resetBoard();
+    gameOver()
   }, [data.diceState])
 
 
