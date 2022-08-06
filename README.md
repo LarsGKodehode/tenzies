@@ -3,3 +3,5 @@
 
 # INFO
 Creating a tini tiny Tenzies game based on some design files from Scrimba
+
+[figma link](https://www.figma.com/file/br7h1vhyILxYbUGJOedEa6/Tenzies-(Copy)?node-id=0%3A1)
