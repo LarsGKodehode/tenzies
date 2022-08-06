@@ -5,6 +5,9 @@
   align-items: center;
   justify-content: center;
 
+  /* shape */
+  min-width: 200px;
+
   /* color */
   background-color: #0B2434;
 }

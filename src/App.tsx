@@ -26,6 +26,8 @@ interface DiceState {
 // COMPONENT
 function App() {
 
+  // State Management
+
     /**
    * Construct the initial state of App,
    * @returns 
@@ -52,7 +54,18 @@ function App() {
 
   const [ data, setData ] = useState<AppState>(initialAppState);
 
-  // HELPERS
+  
+  /**
+   * Keeps track of if game is won and handles what should happen next
+   */
+   useEffect(() => {
+    if(!gameIsWon()) {return};
+
+    gameOver()
+  }, [data.diceState])
+
+  
+  // Game Functions
   /**
    * Populates the board with dices
    * @param diceArray 
@@ -127,13 +140,6 @@ function App() {
   };
 
   /**
-   * Resets board
-   */
-  function resetBoard(): void {
-    setData(initialAppState);
-  };
-
-  /**
    * Checks if game state === game won
    */
   function gameIsWon(): boolean {
@@ -162,13 +168,11 @@ function App() {
   };
 
   /**
-   * Keeps track of if game is won and handles what should happen next
+   * Resets board
    */
-  useEffect(() => {
-    if(!gameIsWon()) {return};
-
-    gameOver()
-  }, [data.diceState])
+   function resetBoard(): void {
+    setData(initialAppState);
+  };
 
 
   // Props
