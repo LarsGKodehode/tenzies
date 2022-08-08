@@ -1,5 +1,6 @@
-// IMPORTS
+// 3rd Parties
 import React, { BaseSyntheticEvent, useEffect, useState } from 'react';
+import Confetti from 'canvas-confetti';
 
 // components
 import GameInfo from './assets/components/GameInfo/GameInfo';
@@ -11,6 +12,15 @@ import styles from './App.module.css';
 
 
 // INTERFACES
+interface AppProps {
+  gameOptions: GameOptions,
+  confettiOptions?: Confetti.Options,
+};
+
+interface GameOptions {
+  numberOfDice: number,
+};
+
 interface AppState {
   diceState: Array<DiceState>,
   conditionWon: boolean,
@@ -24,7 +34,8 @@ interface DiceState {
 
 
 // COMPONENT
-function App() {
+function App(props: AppProps) {
+  const { gameOptions, confettiOptions} = props;
 
   // State Management
 
@@ -33,8 +44,7 @@ function App() {
    * @returns 
    */
   const initialAppState = (): AppState => {
-
-    const numberOfDice = 10;
+    const { numberOfDice } = gameOptions;
 
     let diceArray: Array<DiceState> = [];
 
@@ -54,22 +64,27 @@ function App() {
 
   const [ data, setData ] = useState<AppState>(initialAppState);
 
-  
   /**
    * Keeps track of if game is won and handles what should happen next
    */
    useEffect(() => {
     if(!gameIsWon()) {return};
 
-    gameOver()
-  }, [data.diceState])
+    // Set state to gameWon
+    setData((oldData) => {
+      return {
+        ...oldData,
+        conditionWon: true,
+      };
+    });
+
+    gameOver();
+  }, [data.diceState]);
 
   
   // Game Functions
   /**
    * Populates the board with dices
-   * @param diceArray 
-   * @returns 
    */
   function populateBoard(diceArray: Array<DiceState>): Array<JSX.Element> {
     return diceArray.map((diceState, index) => {
@@ -155,22 +170,20 @@ function App() {
     };
 
     // if we get here we have won
-    console.log("we won");
     return true;
   };
 
   /**
    * Handles all the stuff we want to do when game is over
-   * currently rather empty
    */
   function gameOver(): void {
-    setTimeout(resetBoard, 2000);
+    Confetti(confettiOptions);
   };
 
   /**
    * Resets board
    */
-   function resetBoard(): void {
+   function newGame(): void {
     setData(initialAppState);
   };
 
@@ -192,7 +205,12 @@ function App() {
   };
 
   const buttonProps = {
-    handleClick: () => rollDice(),
+    text: (data.conditionWon ?
+      'New Game' :
+      'Roll Dice'),
+    handleClick: (data.conditionWon ?
+      () => newGame() :
+      () => rollDice()),
   };
 
   return (
