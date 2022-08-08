@@ -4,11 +4,12 @@ import { MouseEventHandler } from "react";
 import styles from './button.module.css';
 
 interface ButtonProps {
+  text: string,
   handleClick: MouseEventHandler,
 };
 
 function Button(props: ButtonProps) {
-  const { handleClick } = props;
+  const { text, handleClick } = props;
 
   const buttonClasses = {
     className: [
@@ -22,7 +23,7 @@ function Button(props: ButtonProps) {
       {...buttonClasses}
       onClick={handleClick}
     >
-      Roll Dice
+      {text}
     </button>
   );
 };
